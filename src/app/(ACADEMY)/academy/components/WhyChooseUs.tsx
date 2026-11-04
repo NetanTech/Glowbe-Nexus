@@ -48,9 +48,10 @@ export default function WhyChooseUs() {
         <div className="mt-10 grid items-start gap-6 sm:mt-12 lg:mt-14 lg:grid-cols-[2fr_3fr] lg:gap-8 xl:gap-10">
           <div className="relative isolate aspect-[4/3] w-full overflow-hidden rounded-[22px] bg-surface sm:aspect-[1/1] sm:rounded-[28px] lg:aspect-[1/1]">
             <Image
-              src="/assets/academy-why.png"
+              src="/assets/academy-why.webp"
               alt="Learners collaborating during an Academy session"
               fill
+              quality={75}
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="rounded-[22px] object-cover sm:rounded-[28px]"
             />

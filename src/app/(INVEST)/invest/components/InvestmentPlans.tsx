@@ -7,21 +7,21 @@ const plans = [
     rate: "18–20% p.a.",
     description:
       "A portfolio with a target annual growth objective of 18–20%, using a 19% midpoint rate for illustrative projections.",
-    image: "/assets/invest-plan.png",
+    image: "/assets/invest-plan.webp",
   },
   {
     title: "Balanced Growth",
     rate: "20–24% p.a.",
     description:
       "A portfolio with a target annual growth objective of 20–24%, using a 22% midpoint rate for illustrative projections.",
-    image: "/assets/invest-plan.png",
+    image: "/assets/invest-plan.webp",
   },
   {
     title: "Aggressive Growth",
     rate: "24–30% p.a.",
     description:
       "A portfolio with a target annual growth objective of 24–30%, using a 27% midpoint rate for illustrative projections.",
-    image: "/assets/invest-plan.png",
+    image: "/assets/invest-plan.webp",
   },
 ];
 
@@ -57,6 +57,7 @@ export default function InvestmentPlans() {
                   src={plan.image}
                   alt=""
                   fill
+                  quality={70}
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover"
                 />

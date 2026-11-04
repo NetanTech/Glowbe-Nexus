@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HeroBg } from "../../../../public/svgs/svg";
+import { HeroBg } from "../../../../public/svgs/HeroBg";
 import CurrencyToggle from "./CurrencyToggle";
 
 export default function Hero() {
@@ -41,10 +41,11 @@ export default function Hero() {
       <div className="relative z-10 mx-auto mt-8 grid w-full max-w-[1200px] gap-3 sm:mt-10 sm:gap-4 md:mt-12 lg:mt-14 lg:grid-cols-[2fr_3fr] lg:items-stretch lg:gap-5">
         <div className="relative h-[280px] overflow-hidden rounded-[18px] bg-surface sm:h-[360px] sm:rounded-[22px] md:h-[400px] lg:h-[460px]">
           <Image
-            src="/assets/lifestyle.png"
+            src="/assets/lifestyle.webp"
             alt="Two people reviewing investments together on a phone"
             fill
             priority
+            quality={75}
             sizes="(min-width: 1024px) 40vw, 100vw"
             className="object-cover"
           />
@@ -55,10 +56,10 @@ export default function Hero() {
 
         <div className="relative h-[280px] overflow-hidden rounded-[18px] bg-surface sm:h-[360px] sm:rounded-[22px] md:h-[400px] lg:h-[460px]">
           <Image
-            src="/assets/dashboard-image.png"
+            src="/assets/dashboard-image.webp"
             alt="Glowbe Nexus dashboard preview"
             fill
-            priority
+            quality={75}
             sizes="(min-width: 1024px) 60vw, 100vw"
             className="object-cover object-top"
           />

@@ -7,11 +7,11 @@ export default function HowItWorksPage() {
     <div className="site-shell min-h-screen bg-white">
       <Header />
       <main>
-        <Hero />
+        <div className="bg-[#17253B]">
+          <Hero />
+          <Footer />
+        </div>
       </main>
-      <div className="bg-[#17253B]">
-        <Footer />
-      </div>
     </div>
   );
 }

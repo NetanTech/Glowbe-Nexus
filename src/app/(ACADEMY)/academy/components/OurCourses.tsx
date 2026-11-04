@@ -7,7 +7,7 @@ const courses = [
     level: "Beginner",
     description:
       "Build a solid starting point in financial markets, from forex fundamentals and trading terminology to chart analysis, risk management, and trading psychology.",
-    image: "/assets/course-foundation.png",
+    image: "/assets/course-foundation.webp",
     href: "#foundation",
   },
   {
@@ -15,7 +15,7 @@ const courses = [
     level: "Intermediate",
     description:
       "Build on your existing knowledge with deeper market-structure concepts, multi-timeframe analysis, trade setups, backtesting, and risk management.",
-    image: "/assets/course-mastery.png",
+    image: "/assets/course-mastery.webp",
     href: "#market-mastery",
   },
   {
@@ -23,7 +23,7 @@ const courses = [
     level: "Expert",
     description:
       "Explore advanced market analysis, strategy development, trade management, portfolio-level risk, drawdown management, and performance analytics.",
-    image: "/assets/course-advanced.png",
+    image: "/assets/course-advanced.webp",
     href: "#advanced-strategy",
   },
 ];
@@ -57,6 +57,7 @@ export default function OurCourses() {
                   src={course.image}
                   alt={course.title}
                   fill
+                  quality={70}
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="object-contain"
                 />

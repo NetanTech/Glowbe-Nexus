@@ -11,11 +11,11 @@ export default function AboutPage() {
       <main>
         <Hero />
         <VisionMission />
-        <Values />
+        <div className="bg-[#17253B]">
+          <Values />
+          <Footer />
+        </div>
       </main>
-      <div className="bg-[#17253B]">
-        <Footer />
-      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { HeroBg } from "../../../../../public/svgs/svg";
+import { HeroBg } from "../../../../../public/svgs/HeroBg";
 
 export default function Hero() {
   return (
@@ -7,8 +7,8 @@ export default function Hero() {
         <HeroBg className="absolute inset-x-0 top-0 h-full w-full" />
       </div>
       <div className="relative z-10 mx-auto flex w-full max-w-[720px] flex-col items-center text-center">
-        <span className="inline-flex items-center gap-2 rounded-full bg-[#F3F5F7] px-3.5 py-1.5 text-[12px] font-medium text-muted">
-          <span className="h-1.5 w-1.5 rounded-full border border-muted" />
+        <span className="inline-flex items-center gap-2 rounded-full  px-3.5 py-1.5 text-[12px] font-medium text-brand border border-brand sm:text-[13px]">
+          <span className="h-1.5 w-1.5 rounded-full border " />
           About Us
         </span>
         <h1 className="mt-5 text-balance text-[clamp(1.9rem,5vw,3.5rem)] font-bold leading-[1.1] tracking-tight text-foreground sm:mt-6">

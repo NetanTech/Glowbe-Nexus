@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HeroBg } from "../../../../../public/svgs/svg";
+import { HeroBg } from "../../../../../public/svgs/HeroBg";
 
 export default function Hero() {
   return (
@@ -36,10 +36,11 @@ export default function Hero() {
 
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[22px] bg-surface sm:aspect-[16/11] sm:rounded-[28px] lg:aspect-auto lg:min-h-[420px]">
           <Image
-            src="/assets/academy-hero.png"
+            src="/assets/academy-hero.webp"
             alt="Learner studying markets on a laptop"
             fill
             priority
+            quality={75}
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
           />

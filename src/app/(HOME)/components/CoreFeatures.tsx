@@ -4,32 +4,32 @@ const features = [
   {
     title: "Portfolio management",
     description: "Explore portfolios and manage active investments.",
-    image: "/assets/Bottom.png",
+    image: "/assets/Bottom.webp",
   },
   {
     title: "Personal dashboard",
     description: "See your balance, investment history, and maturity dates.",
-    image: "/assets/Container.png",
+    image: "/assets/Container.webp",
   },
   {
     title: "Wallet funding",
     description: "Fund your wallet and review transactions.",
-    image: "/assets/Bottom.png",
+    image: "/assets/Bottom.webp",
   },
   {
     title: "Growth tracking",
     description: "Follow recorded growth throughout your investment.",
-    image: "/assets/Container.png",
+    image: "/assets/Container.webp",
   },
   {
     title: "Withdrawal management",
     description: "Submit requests and track their progress.",
-    image: "/assets/Bottom.png",
+    image: "/assets/Bottom.webp",
   },
   {
     title: "Learning resources",
     description: "Discover courses and mentorship opportunities.",
-    image: "/assets/Container.png",
+    image: "/assets/Container.webp",
   },
 ];
 
@@ -62,8 +62,9 @@ export default function CoreFeatures() {
                   src={feature.image}
                   alt={feature.title}
                   fill
+                  quality={70}
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover pt-8 "
+                  className="object-cover pt-8"
                 />
               </div>
               <h3 className="mt-3 text-[16px] font-semibold tracking-tight text-foreground sm:mt-4 sm:text-[17px]">

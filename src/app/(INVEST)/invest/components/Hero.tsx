@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HeroBg } from "../../../../../public/svgs/svg";
+import { HeroBg } from "../../../../../public/svgs/HeroBg";
 
 export default function Hero() {
   return (
@@ -34,10 +34,11 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto mt-10 aspect-[16/10] w-full max-w-[1100px] overflow-hidden rounded-[22px] bg-surface sm:mt-12 sm:aspect-[16/9] sm:rounded-[28px] lg:mt-14 lg:aspect-auto lg:min-h-[480px]">
         <Image
-          src="/assets/dashboard-image.png"
+          src="/assets/dashboard-image.webp"
           alt="Glowbe Nexus investment dashboard preview"
           fill
           priority
+          quality={75}
           sizes="(min-width: 1100px) 1100px, 100vw"
           className="object-cover object-top"
         />

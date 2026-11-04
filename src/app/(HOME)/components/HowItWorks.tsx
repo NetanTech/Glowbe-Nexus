@@ -60,10 +60,10 @@ export default function HowItWorks() {
               <div className="rounded-[22px] bg-[#1a3a6b] p-3 sm:rounded-[28px] sm:p-4 md:p-5">
                 <div className="relative h-[240px] w-full overflow-hidden rounded-[18px] sm:h-[340px] sm:rounded-[22px] md:h-[400px] lg:h-[min(520px,calc(100vh-8rem))]">
                   <Image
-                    src="/assets/howitworks.png"
+                    src="/assets/howitworks.webp"
                     alt="Glowbe Nexus dashboard preview"
                     fill
-                    priority
+                    quality={75}
                     sizes="(min-width: 1024px) 700px, 100vw"
                     className="object-contain object-center"
                   />

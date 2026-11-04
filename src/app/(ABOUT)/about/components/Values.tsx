@@ -45,7 +45,7 @@ export default function Values() {
   const FeaturedIcon = featured.icon;
 
   return (
-    <section className="bg-[#F3F5F7] px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-10 lg:py-24">
+    <section className="relative z-10 rounded-b-[32px] bg-[#F3F5F7] px-4 py-14 sm:rounded-b-[40px] sm:px-6 sm:py-16 md:rounded-b-[48px] md:px-8 md:py-20 lg:rounded-b-[56px] lg:px-10 lg:py-24">
       <div className="mx-auto grid w-full max-w-[1200px] gap-4 lg:grid-cols-[1.05fr_1.35fr] lg:gap-5">
         <div className="relative flex min-h-[420px] flex-col overflow-hidden rounded-[22px] bg-white p-6 sm:min-h-[520px] sm:rounded-[28px] sm:p-8 lg:min-h-full">
           <div className="relative z-10">
@@ -60,12 +60,12 @@ export default function Values() {
 
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] sm:h-[60%]">
             <Image
-              src="/assets/coin-pot.png"
+              src="/assets/coin-pot.webp"
               alt="Plant growing into a coin, representing long-term value"
               fill
+              quality={75}
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-contain object-left-bottom"
-              priority
             />
           </div>
         </div>

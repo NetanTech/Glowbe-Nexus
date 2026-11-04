@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { HeroBg } from "../../../../../public/svgs/svg";
+import { HeroBg } from "../../../../../public/svgs/HeroBg";
 
 export default function Hero() {
   return (
-    <section className="relative -mt-[4.5rem] overflow-hidden px-4 pb-16 pt-[calc(4.5rem+2.5rem)] sm:px-6 sm:pb-20 sm:pt-[calc(4.5rem+3rem)] md:px-8 lg:px-10 lg:pb-28 lg:pt-[calc(4.5rem+4rem)]">
+    <section className="relative z-10 -mt-[4.5rem] overflow-hidden rounded-b-[32px] bg-white px-4 pb-16 pt-[calc(4.5rem+2.5rem)] sm:rounded-b-[40px] sm:px-6 sm:pb-20 sm:pt-[calc(4.5rem+3rem)] md:rounded-b-[48px] md:px-8 lg:rounded-b-[56px] lg:px-10 lg:pb-28 lg:pt-[calc(4.5rem+4rem)]">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-full overflow-hidden" aria-hidden>
         <HeroBg className="absolute inset-x-0 top-0 h-full w-full" />
       </div>
