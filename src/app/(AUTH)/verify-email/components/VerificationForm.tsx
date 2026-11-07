@@ -10,6 +10,7 @@ import {
 } from "react";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { authRequest, saveResetCode, saveSession } from "@/src/lib/auth-api";
 
 const OTP_LENGTH = 6;
 
@@ -21,7 +22,12 @@ export default function VerificationForm() {
   const [otp, setOtp] = useState<string[]>(Array(OTP_LENGTH).fill(""));
   const [focused, setFocused] = useState(0);
   const [seconds, setSeconds] = useState(59);
+  const [error, setError] = useState("");
+  const [pending, setPending] = useState(false);
+  const [shake, setShake] = useState(false);
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
+  const lastTried = useRef("");
+  const busy = useRef(false);
 
   useEffect(() => {
     if (seconds <= 0) return;
@@ -57,21 +63,67 @@ export default function VerificationForm() {
     inputsRef.current[focusIndex]?.focus();
   }
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (otp.join("").length < OTP_LENGTH) return;
-    if (next === "reset-password") {
-      router.push("/reset-password");
+  useEffect(() => {
+    const code = otp.join("");
+    if (code.length < OTP_LENGTH) {
+      lastTried.current = "";
       return;
     }
-    router.push("/verification-complete");
+    if (busy.current || lastTried.current === code) return;
+
+    lastTried.current = code;
+    busy.current = true;
+    setError("");
+    setPending(true);
+
+    (async () => {
+      try {
+        if (next === "reset-password") {
+          saveResetCode(code);
+          router.push(`/reset-password?email=${encodeURIComponent(email)}`);
+          return;
+        }
+
+        const result = await authRequest<{
+          accessToken: string;
+          refreshToken: string;
+        }>("/api/auth/verify-email", { email, code });
+
+        if (result.data?.accessToken && result.data.refreshToken) {
+          saveSession(result.data.accessToken, result.data.refreshToken);
+        }
+        router.push("/verification-complete");
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Could not verify code");
+        setShake(true);
+        window.setTimeout(() => setShake(false), 360);
+        setPending(false);
+      } finally {
+        busy.current = false;
+      }
+    })();
+  }, [otp, email, next, router]);
+
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
   }
 
-  function resend() {
-    if (seconds > 0) return;
-    setSeconds(59);
-    setOtp(Array(OTP_LENGTH).fill(""));
-    inputsRef.current[0]?.focus();
+  async function resend() {
+    if (seconds > 0 || email === "example@gmail.com") return;
+    setError("");
+    try {
+      await authRequest(
+        next === "reset-password"
+          ? "/api/auth/resend-reset-code"
+          : "/api/auth/resend-verification",
+        { email }
+      );
+      setSeconds(59);
+      setOtp(Array(OTP_LENGTH).fill(""));
+      inputsRef.current[0]?.focus();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not resend code");
+    }
   }
 
   return (
@@ -85,10 +137,10 @@ export default function VerificationForm() {
       </p>
 
       <form onSubmit={onSubmit} className="mt-8">
-        <div className="flex gap-2 sm:gap-3">
+        <div className={`flex gap-2 sm:gap-3 ${shake ? "otp-shake" : ""}`}>
           {otp.map((digit, index) => (
             <input
-              key={index}
+              key={`${index}-${digit ? "filled" : "empty"}`}
               ref={(el) => {
                 inputsRef.current[index] = el;
               }}
@@ -96,26 +148,27 @@ export default function VerificationForm() {
               autoComplete={index === 0 ? "one-time-code" : "off"}
               maxLength={1}
               value={digit}
+              disabled={pending}
               onChange={(e) => updateDigit(index, e.target.value)}
               onKeyDown={(e) => onKeyDown(index, e)}
               onPaste={onPaste}
               onFocus={() => setFocused(index)}
-              className={`h-16 w-14 rounded-xl text-center text-lg font-semibold outline-none transition sm:h-20 sm:w-18 ${
+              className={`h-14 w-12 rounded-xl text-center text-lg font-semibold outline-none transition duration-200 sm:h-16 sm:w-14 ${
+                digit ? "otp-pop border border-brand-soft bg-white" : ""
+              } ${
                 focused === index || digit
-                  ? "border border-[#3B5BDB] bg-white"
+                  ? "border border-brand-soft bg-white"
                   : "border border-transparent bg-[#F3F4F6]"
-              } focus:border-[#3B5BDB] focus:bg-white`}
+              } focus:border-brand-soft focus:bg-white`}
               aria-label={`Digit ${index + 1}`}
             />
           ))}
         </div>
 
-        <button
-          type="submit"
-          className="mt-6 w-full rounded-xl bg-brand px-4 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-soft"
-        >
-          Verify
-        </button>
+        {error ? <p className="mt-4 text-[13px] text-red-600">{error}</p> : null}
+        {pending ? (
+          <p className="mt-4 text-center text-[13px] font-medium text-brand-soft">Verifying...</p>
+        ) : null}
       </form>
 
       <p className="mt-5 text-center text-[13px] text-muted">

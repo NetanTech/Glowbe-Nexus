@@ -25,7 +25,7 @@ export default function Hero() {
         <div className="mt-6 flex w-full max-w-sm flex-col items-stretch gap-3 sm:mt-8 sm:max-w-none sm:w-auto sm:flex-row sm:items-center sm:justify-center">
           <Link
             href="/register"
-            className="rounded-lg bg-brand px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-brand-soft"
+            className="btn-primary rounded-lg px-5 py-3 text-center text-sm font-semibold"
           >
             Get started
           </Link>

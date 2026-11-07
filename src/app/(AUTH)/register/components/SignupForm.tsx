@@ -4,16 +4,30 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { EyeIcon, EyeOffIcon, GoogleIcon } from "../../components/AuthIcons";
+import { authRequest } from "@/src/lib/auth-api";
 
 export default function SignupForm() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [pending, setPending] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
+    const name = String(form.get("name") || "");
     const email = String(form.get("email") || "");
-    router.push(`/verify-email?email=${encodeURIComponent(email)}`);
+    const password = String(form.get("password") || "");
+    setError("");
+    setPending(true);
+
+    try {
+      await authRequest("/api/auth/register", { name, email, password });
+      router.push(`/verify-email?email=${encodeURIComponent(email)}`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not create account");
+      setPending(false);
+    }
   }
 
   return (
@@ -93,11 +107,14 @@ export default function SignupForm() {
           .
         </p>
 
+        {error ? <p className="text-[13px] text-red-600">{error}</p> : null}
+
         <button
           type="submit"
-          className="w-full rounded-xl bg-brand px-4 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-soft"
+          disabled={pending}
+          className="btn-primary w-full rounded-xl px-4 py-3.5 text-sm font-semibold disabled:opacity-70"
         >
-          Sign up
+          {pending ? "Creating account..." : "Sign up"}
         </button>
       </form>
 

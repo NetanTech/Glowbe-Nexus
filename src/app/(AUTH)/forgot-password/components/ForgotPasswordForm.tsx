@@ -1,16 +1,30 @@
 "use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { authRequest } from "@/src/lib/auth-api";
 
 export default function ForgotPasswordForm() {
   const router = useRouter();
+  const [error, setError] = useState("");
+  const [pending, setPending] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = String(form.get("email") || "");
-    router.push(`/verify-email?email=${encodeURIComponent(email)}&next=reset-password`);
+    setError("");
+    setPending(true);
+
+    try {
+      await authRequest("/api/auth/forgot-password", { email });
+      router.push(
+        `/verify-email?email=${encodeURIComponent(email)}&next=reset-password`
+      );
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not send reset code");
+      setPending(false);
+    }
   }
 
   return (
@@ -34,11 +48,14 @@ export default function ForgotPasswordForm() {
           />
         </label>
 
+        {error ? <p className="text-[13px] text-red-600">{error}</p> : null}
+
         <button
           type="submit"
-          className="w-full rounded-xl bg-brand px-4 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-soft"
+          disabled={pending}
+          className="btn-primary w-full rounded-xl px-4 py-3.5 text-sm font-semibold disabled:opacity-70"
         >
-          Continue
+          {pending ? "Sending..." : "Continue"}
         </button>
       </form>
     </div>

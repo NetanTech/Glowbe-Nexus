@@ -16,7 +16,7 @@ const courses = [
     description:
       "Build on your existing knowledge with deeper market-structure concepts, multi-timeframe analysis, trade setups, backtesting, and risk management.",
     image: "/assets/course-mastery.webp",
-    href: "#market-mastery",
+    href: "/market-mastery",
   },
   {
     title: "Advanced Strategy",
@@ -78,7 +78,7 @@ export default function OurCourses() {
                 </p>
                 <Link
                   href={course.href}
-                  className="mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-[#2A446B] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-soft"
+                  className="btn-primary mt-4 inline-flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-semibold"
                 >
                   Explore course
                   <span aria-hidden="true">→</span>

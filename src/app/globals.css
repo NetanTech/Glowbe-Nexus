@@ -35,3 +35,78 @@ body {
 .site-shell {
   background-color: transparent;
 }
+
+.btn-primary {
+  background-color: var(--brand-soft);
+  color: #fff;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--brand);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(26, 51, 88, 0.18);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+@keyframes otp-pop {
+  0% {
+    transform: scale(0.92);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes otp-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  75% {
+    transform: translateX(-2px);
+  }
+}
+
+@keyframes ai-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.ai-float {
+  animation: ai-float 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-float {
+    animation: none;
+  }
+}
+
+.otp-pop {
+  animation: otp-pop 220ms ease;
+}
+
+.otp-shake {
+  animation: otp-shake 360ms ease;
+}

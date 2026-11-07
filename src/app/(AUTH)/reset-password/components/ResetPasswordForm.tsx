@@ -1,20 +1,25 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { EyeIcon, EyeOffIcon } from "../../components/AuthIcons";
+import { authRequest, clearResetCode, readResetCode } from "@/src/lib/auth-api";
 
 export default function ResetPasswordForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [error, setError] = useState("");
+  const [pending, setPending] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const password = String(form.get("password") || "");
     const confirm = String(form.get("confirm") || "");
+    const email = searchParams.get("email") || "";
+    const code = readResetCode();
 
     if (password !== confirm) {
       setError("Passwords do not match");
@@ -22,7 +27,16 @@ export default function ResetPasswordForm() {
     }
 
     setError("");
-    router.push("/login");
+    setPending(true);
+
+    try {
+      await authRequest("/api/auth/reset-password", { email, code, password });
+      clearResetCode();
+      router.push("/login");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not reset password");
+      setPending(false);
+    }
   }
 
   return (
@@ -81,9 +95,10 @@ export default function ResetPasswordForm() {
 
         <button
           type="submit"
-          className="mt-2 w-full rounded-xl bg-brand px-4 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-soft"
+          disabled={pending}
+          className="btn-primary mt-2 w-full rounded-xl px-4 py-3.5 text-sm font-semibold disabled:opacity-70"
         >
-          Continue
+          {pending ? "Saving..." : "Continue"}
         </button>
       </form>
     </div>

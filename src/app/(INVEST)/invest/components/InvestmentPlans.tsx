@@ -79,7 +79,7 @@ export default function InvestmentPlans() {
 
                 <Link
                   href="/register"
-                  className="mt-5 inline-flex w-fit items-center gap-2 rounded-lg bg-brand-soft px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-soft"
+                  className="btn-primary mt-5 inline-flex w-fit items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold"
                 >
                   Make an investment
                   <span aria-hidden="true">→</span>

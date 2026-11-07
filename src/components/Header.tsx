@@ -63,7 +63,7 @@ export default function Header() {
           </Link>
           <Link
             href="/register"
-            className="hidden rounded-lg bg-brand px-3.5 py-2 text-[12px] font-semibold text-white transition-colors hover:bg-brand-soft sm:inline-flex sm:px-4 sm:py-2.5 sm:text-[13px]"
+            className="btn-primary hidden rounded-lg px-3.5 py-2 text-[12px] font-semibold sm:inline-flex sm:px-4 sm:py-2.5 sm:text-[13px]"
           >
             Get started
           </Link>
@@ -109,7 +109,7 @@ export default function Header() {
             </Link>
             <Link
               href="/register"
-              className="rounded-lg bg-brand px-4 py-3 text-center text-sm font-semibold text-white"
+              className="btn-primary rounded-lg px-4 py-3 text-center text-sm font-semibold"
               onClick={() => setMenuOpen(false)}
             >
               Get started
