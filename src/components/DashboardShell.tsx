@@ -1,15 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import DashboardSidebar from "@/src/components/DashboardSidebar";
 import DashboardHeader from "@/src/components/DashboardHeader";
+
+function SidebarFallback({ isOpen }: { isOpen: boolean }) {
+  return (
+    <aside
+      aria-hidden
+      className={`fixed top-0 left-0 z-50 flex h-full w-[220px] shrink-0 flex-col bg-[#1B2838] px-3.5 py-6 text-white transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+    />
+  );
+}
 
 export default function DashboardShell({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <div className="flex h-screen bg-brand-soft pt-3 pl-3">
-      <DashboardSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+      <Suspense fallback={<SidebarFallback isOpen={isSidebarOpen} />}>
+        <DashboardSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+      </Suspense>
 
       {isSidebarOpen ? (
         <button
