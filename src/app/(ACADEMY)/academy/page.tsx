@@ -8,20 +8,22 @@ import WhyChooseUs from "./components/WhyChooseUs";
 
 export default function AcademyPage() {
   return (
-    <div className="site-shell min-h-screen bg-white">
-      <Header />
-      <main>
-        <Hero />
-        <WhyChooseUs />
-        <div className="bg-black">
-          <OurCourses />
-          <Mentorship />
-        </div>
-        <div className="bg-[#17253B]">
-          <Faq />
-          <Footer />
-        </div>
-      </main>
+    <div className="site-shell min-h-screen bg-[#17253B]">
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <Hero />
+          <WhyChooseUs />
+          <div className="bg-black">
+            <OurCourses />
+            <Mentorship />
+          </div>
+          <div className="bg-[#17253B]">
+            <Faq />
+          </div>
+        </main>
+      </div>
+      <Footer />
     </div>
   );
 }

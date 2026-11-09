@@ -5,15 +5,17 @@ import CourseDetails from "./components/CourseDetails";
 
 export default function MarketMasteryPage() {
   return (
-    <div className="site-shell min-h-screen bg-white">
-      <Header />
-      <main>
-        <Hero />
-        <div className="bg-[#17253B]">
-          <CourseDetails />
-          <Footer />
-        </div>
-      </main>
+    <div className="site-shell min-h-screen bg-[#17253B]">
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <Hero />
+          <div className="bg-[#17253B]">
+            <CourseDetails />
+          </div>
+        </main>
+      </div>
+      <Footer />
     </div>
   );
 }

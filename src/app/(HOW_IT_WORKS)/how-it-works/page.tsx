@@ -1,17 +1,15 @@
-import Header from "@/src/components/Header";
-import Footer from "@/src/components/Footer";
-import Hero from "./components/Hero";
+"use client";
+
+import { useEffect } from "react";
 
 export default function HowItWorksPage() {
+  useEffect(() => {
+    window.location.replace("/#how-it-works");
+  }, []);
+
   return (
-    <div className="site-shell min-h-screen bg-white">
-      <Header />
-      <main>
-        <div className="bg-[#17253B]">
-          <Hero />
-          <Footer />
-        </div>
-      </main>
+    <div className="flex min-h-screen items-center justify-center bg-white text-sm text-muted">
+      Taking you to How it works…
     </div>
   );
 }

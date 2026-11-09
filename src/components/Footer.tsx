@@ -5,6 +5,7 @@ const explore = [
   { label: "Home", href: "/" },
   { label: "Investment Plans", href: "/invest" },
   { label: "Academy", href: "/academy" },
+  { label: "How It Works", href: "/#how-it-works" },
   { label: "About Us", href: "/about" },
 ];
 
@@ -84,7 +85,10 @@ function FooterColumn({
 
 export default function Footer() {
   return (
-    <footer id="get-started" className="relative overflow-hidden bg-[#17253B] text-white">
+    <footer
+      id="get-started"
+      className="sticky bottom-0 z-0 overflow-hidden bg-[#17253B] text-white"
+    >
       <div className="relative z-10 mx-auto w-full max-w-[1140px] px-6 pt-16 sm:pt-20 md:px-10">
         {/* CTA */}
         <div className="mx-auto max-w-[480px] text-center">

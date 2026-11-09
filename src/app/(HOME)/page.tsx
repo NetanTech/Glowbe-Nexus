@@ -8,22 +8,22 @@ import Testimonials from "./components/Testimonials";
 
 export default function Home() {
   return (
-    <div className="site-shell min-h-screen bg-white">
-      <Header />
-      <main>
-        <Hero />
-        <div className="bg-black">
-          <CoreFeatures />
-          <HowItWorks />
-        </div>
-        <Testimonials />
-
-        <div className="bg-[#17253B]">
-          <Faq />
-          <Footer />
-        </div>
-      </main>
+    <div className="site-shell min-h-screen bg-[#17253B]">
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <Hero />
+          <div className="bg-black">
+            <CoreFeatures />
+            <HowItWorks />
+          </div>
+          <Testimonials />
+          <div className="bg-[#17253B]">
+            <Faq />
+          </div>
+        </main>
+      </div>
+      <Footer />
     </div>
   );
 }
-

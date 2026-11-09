@@ -6,16 +6,18 @@ import VisionMission from "./components/VisionMission";
 
 export default function AboutPage() {
   return (
-    <div className="site-shell min-h-screen bg-white">
-      <Header />
-      <main>
-        <Hero />
-        <VisionMission />
-        <div className="bg-[#17253B]">
-          <Values />
-          <Footer />
-        </div>
-      </main>
+    <div className="site-shell min-h-screen bg-[#17253B]">
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <Hero />
+          <VisionMission />
+          <div className="bg-[#17253B]">
+            <Values />
+          </div>
+        </main>
+      </div>
+      <Footer />
     </div>
   );
 }

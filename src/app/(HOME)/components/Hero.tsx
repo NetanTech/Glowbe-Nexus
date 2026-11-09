@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section
       id="invest"
-      className="relative -mt-[4.5rem] overflow-hidden px-4 pb-12 pt-[calc(4.5rem+2rem)] sm:px-6 sm:pb-16 sm:pt-[calc(4.5rem+2.5rem)] md:px-8 lg:px-10 lg:pb-24 lg:pt-[calc(4.5rem+3rem)]"
+      className="relative -mt-[4.5rem] overflow-hidden bg-white px-4 pb-12 pt-[calc(4.5rem+2rem)] sm:px-6 sm:pb-16 sm:pt-[calc(4.5rem+2.5rem)] md:px-8 lg:px-10 lg:pb-24 lg:pt-[calc(4.5rem+3rem)]"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-full overflow-hidden" aria-hidden>
         <HeroBg className="absolute inset-x-0 top-0 h-full w-full" />

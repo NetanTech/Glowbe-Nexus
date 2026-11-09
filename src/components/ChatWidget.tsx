@@ -93,32 +93,32 @@ export default function ChatWidget() {
         <section
           role="dialog"
           aria-label="Glowbe Nexus assistant"
-          className="flex h-[min(440px,calc(100dvh-7rem))] w-[min(280px,calc(100vw-2rem))] flex-col overflow-hidden rounded-[22px] bg-white shadow-[0_12px_36px_rgba(15,23,42,0.16)]"
+          className="flex h-[min(680px,calc(100dvh-5rem))] w-[min(420px,calc(100vw-1.25rem))] flex-col overflow-hidden rounded-[26px] bg-white shadow-[0_18px_52px_rgba(15,23,42,0.2)] sm:w-[min(440px,calc(100vw-2rem))]"
         >
-          <header className="flex items-center justify-between bg-[#2A446B] px-3 py-2.5 text-white">
-            <div className="flex items-center gap-1.5">
-              <LogoAiIcon className="h-10 w-10" />
-              <p className="text-[13px] font-semibold tracking-tight">Glowbe Nexus</p>
+          <header className="flex items-center justify-between bg-[#2A446B] px-4 py-3 text-white">
+            <div className="flex items-center gap-2">
+              <LogoAiIcon className="h-11 w-11" />
+              <p className="text-[15px] font-semibold tracking-tight">Glowbe Nexus</p>
             </div>
             <button
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close chat"
-              className="flex h-7 w-7 items-center justify-center rounded-full border border-white/70"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/70"
             >
-              <span className="block h-px w-3 bg-white" />
+              <span className="block h-px w-3.5 bg-white" />
             </button>
           </header>
 
-          <div ref={scroller} className="flex-1 space-y-3 overflow-y-auto px-3 py-3">
+          <div ref={scroller} className="flex-1 space-y-3.5 overflow-y-auto px-4 py-4">
             {messages.map((message) =>
               message.from === "bot" ? (
-                <div key={message.id} className="flex items-start gap-2">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2A446B]">
-                    <LogoAiIcon className="h-8 w-8" />
+                <div key={message.id} className="flex items-start gap-2.5">
+                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#2A446B]">
+                    <LogoAiIcon className="h-9 w-9" />
                   </span>
                   <div className="min-w-0">
-                    <p className="whitespace-pre-line rounded-2xl rounded-tl-md bg-[#F3F4F6] px-3 py-2.5 text-[12px] leading-relaxed text-foreground">
+                    <p className="whitespace-pre-line rounded-2xl rounded-tl-md bg-[#F3F4F6] px-3.5 py-3 text-[13px] leading-relaxed text-foreground">
                       {message.text}
                     </p>
                     <p className="mt-1 text-[11px] text-muted">{message.time}</p>
@@ -127,7 +127,7 @@ export default function ChatWidget() {
               ) : (
                 <div key={message.id} className="flex justify-end">
                   <div className="max-w-[85%]">
-                    <p className="rounded-2xl rounded-tr-md bg-[#F3F4F6] px-3 py-2.5 text-[12px] leading-relaxed text-foreground">
+                    <p className="rounded-2xl rounded-tr-md bg-[#F3F4F6] px-3.5 py-3 text-[13px] leading-relaxed text-foreground">
                       {message.text}
                     </p>
                     <p className="mt-1 text-right text-[11px] text-muted">{message.time}</p>
@@ -137,13 +137,13 @@ export default function ChatWidget() {
             )}
 
             {asked ? null : (
-              <div className="flex flex-wrap gap-1.5 pl-8">
+              <div className="flex flex-wrap gap-2 pl-10">
                 {suggestions.map((suggestion) => (
                   <button
                     key={suggestion}
                     type="button"
                     onClick={() => pushExchange(suggestion)}
-                    className="rounded-full border border-line bg-white px-2.5 py-1 text-[12px] text-foreground transition-colors hover:bg-[#F3F4F6]"
+                    className="rounded-full border border-line bg-white px-3 py-1.5 text-[12px] text-foreground transition-colors hover:bg-[#F3F4F6]"
                   >
                     {suggestion}
                   </button>
@@ -152,21 +152,21 @@ export default function ChatWidget() {
             )}
           </div>
 
-          <form onSubmit={onSubmit} className="px-3 py-3 shadow-[inset_0_1px_0_rgba(15,23,42,0.08)]">
-            <div className="flex items-center gap-2 rounded-lg bg-[#F3F4F6] px-4 py-2">
+          <form onSubmit={onSubmit} className="px-4 py-3.5 shadow-[inset_0_1px_0_rgba(15,23,42,0.08)]">
+            <div className="flex items-center gap-2 rounded-xl bg-[#F3F4F6] px-4 py-2.5">
               <input
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
                 placeholder="Type your message here..."
                 aria-label="Message"
-                className="min-w-0 flex-1 bg-transparent py-1.5 text-[13px] text-foreground outline-none placeholder:text-muted"
+                className="min-w-0 flex-1 bg-transparent py-1.5 text-[14px] text-foreground outline-none placeholder:text-muted"
               />
               <button
                 type="submit"
                 aria-label="Send message"
-                className="flex h-7 w-7 shrink-0 items-center justify-center"
+                className="flex h-8 w-8 shrink-0 items-center justify-center"
               >
-                <SendIcon className="h-7 w-7" />
+                <SendIcon className="h-8 w-8" />
               </button>
             </div>
           </form>
@@ -176,9 +176,9 @@ export default function ChatWidget() {
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Open chat"
-          className="ai-float flex h-12 w-12 items-center justify-center rounded-full bg-[#2A446B] shadow-[0_10px_30px_rgba(42,68,107,0.35)]"
+          className="ai-float flex h-14 w-14 items-center justify-center rounded-full bg-[#2A446B] shadow-[0_10px_30px_rgba(42,68,107,0.35)]"
         >
-          <MessageAiIcon className="h-8 w-8" />
+          <MessageAiIcon className="h-9 w-9" />
         </button>
       )}
     </div>
