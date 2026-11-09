@@ -10,8 +10,10 @@ export default function AboutPage() {
       <div className="relative z-10">
         <Header />
         <main>
-          <Hero />
-          <VisionMission />
+          <div className="bg-white">
+            <Hero />
+            <VisionMission />
+          </div>
           <div className="bg-[#17253B]">
             <Values />
           </div>

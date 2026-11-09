@@ -11,7 +11,9 @@ export default function InvestPage() {
       <div className="relative z-10">
         <Header />
         <main>
-          <Hero />
+          <div className="bg-white">
+            <Hero />
+          </div>
           <div className="bg-black">
             <InvestmentPlans />
             <InvestmentCalculator />

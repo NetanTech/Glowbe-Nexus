@@ -9,7 +9,9 @@ export default function MarketMasteryPage() {
       <div className="relative z-10">
         <Header />
         <main>
-          <Hero />
+          <div className="bg-white">
+            <Hero />
+          </div>
           <div className="bg-[#17253B]">
             <CourseDetails />
           </div>

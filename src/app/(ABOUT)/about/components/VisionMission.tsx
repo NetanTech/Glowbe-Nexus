@@ -1,6 +1,6 @@
 export default function VisionMission() {
   return (
-    <section className="px-4 pb-14 sm:px-6 sm:pb-16 md:px-8 md:pb-20 lg:px-10 lg:pb-24">
+    <section className="bg-white px-4 pb-14 sm:px-6 sm:pb-16 md:px-8 md:pb-20 lg:px-10 lg:pb-24">
       <div className="mx-auto w-full max-w-[1100px] rounded-[24px] bg-[#F3F5F7] p-6 sm:rounded-[28px] sm:p-8 md:p-10 lg:p-12">
         <div className="grid gap-10 md:grid-cols-2 md:gap-x-12 md:gap-y-16 lg:gap-x-16 lg:gap-y-20">
           <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold tracking-tight text-foreground md:self-start">

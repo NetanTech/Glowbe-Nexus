@@ -12,8 +12,10 @@ export default function AcademyPage() {
       <div className="relative z-10">
         <Header />
         <main>
-          <Hero />
-          <WhyChooseUs />
+          <div className="bg-white">
+            <Hero />
+            <WhyChooseUs />
+          </div>
           <div className="bg-black">
             <OurCourses />
             <Mentorship />
