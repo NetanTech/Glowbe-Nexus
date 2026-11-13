@@ -41,7 +41,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto mt-8 grid w-full max-w-[1200px] gap-3 sm:mt-10 sm:gap-4 md:mt-12 lg:mt-14 lg:grid-cols-[2fr_3fr] lg:items-stretch lg:gap-5">
         <div className="relative h-[280px] overflow-hidden rounded-[18px] bg-surface sm:h-[360px] sm:rounded-[22px] md:h-[400px] lg:h-[460px]">
           <Image
-            src="/assets/lifestyle.webp"
+            src="/assets/Hero-image-one.png"
             alt="Two people reviewing investments together on a phone"
             fill
             priority
@@ -56,7 +56,7 @@ export default function Hero() {
 
         <div className="relative h-[280px] overflow-hidden rounded-[18px] bg-surface sm:h-[360px] sm:rounded-[22px] md:h-[400px] lg:h-[460px]">
           <Image
-            src="/assets/dashboard-image.webp"
+            src="/assets/Hero-image-two.png"
             alt="Glowbe Nexus dashboard preview"
             fill
             quality={75}

@@ -9,7 +9,7 @@ const steps = [
     title: "Create your account",
     description:
       "Register with your details to establish your Glowbe Nexus account.",
-    image: "/assets/auth_image.webp",
+    image: "/assets/How-it-works-section-1.png",
     alt: "Create your Glowbe Nexus account",
   },
   {
@@ -117,7 +117,7 @@ export default function HowItWorks() {
                     fill
                     quality={75}
                     sizes="(max-width: 1024px) 100vw, 560px"
-                    className="object-cover object-center"
+                    className="object-contain object-center"
                   />
                 </div>
                 <div className="text-center sm:text-left">
@@ -158,7 +158,7 @@ export default function HowItWorks() {
                       fill
                       quality={75}
                       sizes="700px"
-                      className={`object-cover object-center transition-opacity duration-500 ease-out ${
+                      className={`object-contain object-center transition-opacity duration-500 ease-out ${
                         index === active ? "opacity-100" : "opacity-0"
                       }`}
                     />
